@@ -9,7 +9,7 @@ public class SettingsMenu : MonoBehaviour
     public AudioMixer audioMixer;
     
     public Dropdown resolutionDropdown;
-
+    
     Resolution[] resolutions;
 
     void Start()
