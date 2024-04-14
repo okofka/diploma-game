@@ -5,34 +5,35 @@ using UnityEngine.UIElements;
 
 public class PlayerMovementScript : MonoBehaviour
 {
-    public float moveSpeed = 0.03f;
+    public float moveSpeed = 5f;
+    float speedX, speedY;
 
     public Rigidbody2D rb;
     public Animator animator;
 
-    Vector2 movement;
-    Vector2 playerPosition;
-    Vector2 position = new Vector2(-0f, -5f);
     void Update()
     {
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
+        // Отримання вхідних даних для руху
+        float horizontalInput = Input.GetAxisRaw("Horizontal");
+        float verticalInput = Input.GetAxisRaw("Vertical");
 
+        // Визначення вектора руху
+        Vector2 movement = new Vector2(horizontalInput, verticalInput).normalized;
+
+        // Встановлення швидкості анімації
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("Speed", movement.sqrMagnitude);
 
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            playerPosition = transform.position;
-            playerPosition.x += 1; // Збільшуємо X координату на 1
-            playerPosition = Camera.main.ScreenToWorldPoint(playerPosition);
-            position = Vector2.Lerp(transform.position, playerPosition, moveSpeed);
-        }
+        speedX = movement.x;
+        speedY = movement.y;
 
+        // Встановлення швидкості руху
+        rb.velocity = new Vector2(speedX, speedY);
     }
-    void FixedUpdate()
+
+    private void Start()
     {
-        rb.MovePosition(position);
+        rb = GetComponent<Rigidbody2D>();
     }
 }
