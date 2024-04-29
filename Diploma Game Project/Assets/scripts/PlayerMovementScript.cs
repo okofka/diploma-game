@@ -44,6 +44,15 @@ public class PlayerMovementScript : MonoBehaviour
 
     private void Start()
     {
+        canMove=false;
         rb = GetComponent<Rigidbody2D>();
+        StartCoroutine(AllowMovementAfterDelay(2.8f));
+    }
+
+    // Корутина для дозволу на рух після певної затримки
+    private IEnumerator AllowMovementAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        canMove = true;
     }
 }
