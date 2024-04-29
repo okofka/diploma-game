@@ -11,7 +11,30 @@ public class PauseMenu : MonoBehaviour
 
     public int sceneBuildIndex;
 
+    private Animator pauseAnimator;
+
+    private PlayerMovementScript playerMovementScript; // Додайте посилання на скрипт PlayerMovementScript
+
+    private void Start()
+    {
+        pauseAnimator = GameObject.Find("Player").GetComponent<Animator>();
+        pauseAnimator.updateMode = AnimatorUpdateMode.UnscaledTime;
+
+        // Отримайте доступ до скрипту PlayerMovementScript
+        playerMovementScript = GameObject.Find("Player").GetComponent<PlayerMovementScript>();
+    }
+
     void Update()
+    {
+        PausedKeyPressed();
+        // Якщо гра не на паузі, оновлюємо рух
+        if (!GameIsPaused)
+        {
+            playerMovementScript.UpdateMovement();
+        }
+    }
+
+    public void PausedKeyPressed()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -21,19 +44,21 @@ public class PauseMenu : MonoBehaviour
             }
             else
             {
-                Pause();    
+                Pause();
             }
         }
     }
 
     public void Resume()
-    { 
+    {
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
+
+        playerMovementScript.ResumeMovement();
     }
 
-    void Pause()
+    public void Pause()
     {
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;

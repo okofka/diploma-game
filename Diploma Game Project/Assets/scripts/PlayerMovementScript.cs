@@ -6,30 +6,40 @@ using UnityEngine.UIElements;
 public class PlayerMovementScript : MonoBehaviour
 {
     public float moveSpeed = 10f;
-    float speedX, speedY;
 
     public Rigidbody2D rb;
     public Animator animator;
 
-    void Update()
+    private float horizontalInput, verticalInput; // Змінні для збереження значень
+
+    private bool canMove = true; // Дозвіл на рух
+
+    public void PauseMovement()
     {
-        // Отримання вхідних даних для руху
-        float horizontalInput = Input.GetAxisRaw("Horizontal");
-        float verticalInput = Input.GetAxisRaw("Vertical");
+        canMove = false;
+    }
 
-        // Визначення вектора руху
-        Vector2 movement = new Vector2(horizontalInput, verticalInput).normalized;
+    public void ResumeMovement()
+    {
+        canMove = true;
+    }
 
-        // Встановлення швидкості анімації
-        animator.SetFloat("Horizontal", movement.x);
-        animator.SetFloat("Vertical", movement.y);
-        animator.SetFloat("Speed", movement.sqrMagnitude);
+    // Оновлення руху тільки при дозволі на рух
+    public void UpdateMovement()
+    {
+        if (canMove)
+        {
+            horizontalInput = Input.GetAxisRaw("Horizontal");
+            verticalInput = Input.GetAxisRaw("Vertical");
 
-        speedX = movement.x;
-        speedY = movement.y;
+            Vector2 movement = new Vector2(horizontalInput, verticalInput).normalized;
 
-        // Встановлення швидкості руху
-        rb.velocity = new Vector2(speedX, speedY);
+            animator.SetFloat("Horizontal", movement.x);
+            animator.SetFloat("Vertical", movement.y);
+            animator.SetFloat("Speed", movement.sqrMagnitude);
+
+            rb.velocity = movement * moveSpeed;
+        }
     }
 
     private void Start()
