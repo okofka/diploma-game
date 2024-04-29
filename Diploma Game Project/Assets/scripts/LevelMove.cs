@@ -7,14 +7,29 @@ public class LevelMove : MonoBehaviour
 {
     public int sceneBuildIndex;
 
-    // Update is called once per frame
-    private void OnTriggerEnter2D(Collider2D other) 
+    public void Start()
     {
-        print("Trigger Entered");
+        Player player = FindObjectOfType<Player>();
+        Debug.Log("Player level: " + player.level);
+    }
 
-        if (other.tag == "Player") {
-            print("Switching Scene to " + sceneBuildIndex);
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Player")
+        {
+            Player player = FindObjectOfType<Player>();
+
+            if (sceneBuildIndex > PlayerPrefs.GetInt("level", 0))
+            {
+                PlayerPrefs.SetInt("level", sceneBuildIndex);
+                PlayerPrefs.Save();
+            }
+
+            player.level = PlayerPrefs.GetInt("level", 0); // Оновлення рівня гравця з PlayerPref
+            Debug.Log("Player level: " + player.level);
+
             SceneManager.LoadScene(sceneBuildIndex, LoadSceneMode.Single);
         }
     }
 }
+
