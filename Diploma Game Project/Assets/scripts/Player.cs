@@ -12,4 +12,12 @@ public class Player : MonoBehaviour
         level = SceneManager.GetActiveScene().buildIndex;
         Debug.Log("Player level: " + level);
     }
+
+    private void Update()
+    {
+        if (level == 3)
+        {
+            SaveSystem.SavePlayer(this);
+        }
+    }
 }
