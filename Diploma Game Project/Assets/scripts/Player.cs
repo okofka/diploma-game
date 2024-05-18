@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     public int level;
+    private Inventory inventory;
 
     public void Start()
     {
@@ -33,5 +34,10 @@ public class Player : MonoBehaviour
 
 
         */
+    }
+
+    private void Awake()
+    {
+        inventory = new Inventory();
     }
 }
