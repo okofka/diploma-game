@@ -69,6 +69,9 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(sceneBuildIndex, LoadSceneMode.Single);
+        GameIsPaused = false;
+
+        playerMovementScript.ResumeMovement();
     }
 
     public void QuitGame()
