@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
+    [DllImport("user32.dll")]
+    static extern bool SetCursorPos(int X, int Y);
+
     public void PlayGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -22,6 +26,12 @@ public class MainMenu : MonoBehaviour
     {
         // Перевіряємо, чи є продовження гри доступним при запуску меню
         CheckContinueAvailability();
+        CursurEndOptions();
+    }
+
+    private void Update()
+    {
+        Cursor.visible = true;
     }
 
     void CheckContinueAvailability()
@@ -42,5 +52,21 @@ public class MainMenu : MonoBehaviour
         PlayerData savedData = SaveSystem.LoadPlayer();
         int savedSceneIndex = savedData.level;
         SceneManager.LoadScene(savedSceneIndex);
+    }
+
+
+
+    private void CursurEndOptions()
+    {
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = false;
+        SetCursorPositionToCenter();
+    }
+
+    private void SetCursorPositionToCenter()
+    {
+        int xPos = Screen.width / 2;
+        int yPos = Screen.height / 2;
+        SetCursorPos(xPos, yPos);
     }
 }

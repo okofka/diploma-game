@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,8 +16,12 @@ public class PauseMenu : MonoBehaviour
 
     private PlayerMovementScript playerMovementScript; // Додайте посилання на скрипт PlayerMovementScript
 
+    [DllImport("user32.dll")]
+    static extern bool SetCursorPos(int X, int Y);
+
     private void Start()
     {
+        CursurStartOptions();
         pauseAnimator = GameObject.Find("Player").GetComponent<Animator>();
         pauseAnimator.updateMode = AnimatorUpdateMode.UnscaledTime;
 
@@ -41,12 +46,35 @@ public class PauseMenu : MonoBehaviour
             if (GameIsPaused)
             {
                 Resume();
+                CursurStartOptions();
             }
             else
             {
                 Pause();
+                CursurEndOptions();
             }
         }
+    }
+
+    private void CursurStartOptions()
+    {
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = false;
+        SetCursorPositionToCenter();
+    }
+
+    private void CursurEndOptions()
+    {
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = false;
+        SetCursorPositionToCenter();
+    }
+
+    private void SetCursorPositionToCenter()
+    {
+        int xPos = Screen.width / 2;
+        int yPos = Screen.height / 2;
+        SetCursorPos(xPos, yPos);
     }
 
     public void Resume()
