@@ -2326,6 +2326,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00bab40f53de2c84dad5525da04504b7, type: 3}
+--- !u!95 &1305851739 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1173627339547665651, guid: 27a6215530fb0a944b579cf851cdb584, type: 3}
+  m_PrefabInstance: {fileID: 1636248738}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1438239341 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4840504651021856022, guid: 6adbd6ff2abd7084287493c1ad29bc17, type: 3}
@@ -2435,6 +2440,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door
       objectReference: {fileID: 0}
+    - target: {fileID: 6681693101026299029, guid: 27a6215530fb0a944b579cf851cdb584, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1305851739}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

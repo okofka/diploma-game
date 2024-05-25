@@ -8,12 +8,14 @@ public class DoorScript : MonoBehaviour
     public bool locked;
     public BoxCollider2D boxCollider;
     private bool keyInTrigger;
+    public Animator animator;
 
     void Start()
     {
         locked = true;
         boxCollider = GetComponent<BoxCollider2D>();
         UpdateColliderState();
+        animator.GetComponent<Animator>();
     }
     
     private void UpdateColliderState()
@@ -53,6 +55,7 @@ public class DoorScript : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
+                animator.SetTrigger("Open");
                 locked = false;
                 boxCollider.isTrigger = true;
                 GameObject keyObject = GameObject.FindGameObjectWithTag("Key");
