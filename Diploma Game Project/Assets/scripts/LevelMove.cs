@@ -48,7 +48,7 @@ public class LevelMove : MonoBehaviour
 
     private void Update()
     {
-        if (playerInTrigger && Input.GetKeyDown(KeyCode.F))
+        if (playerInTrigger)
         {
             if (doorScript != null && !doorScript.locked)
             {

@@ -1,36 +1,68 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DoorScript : MonoBehaviour
 {
     public bool locked;
-    // Start is called before the first frame update
+    public BoxCollider2D boxCollider;
+    private bool keyInTrigger;
+
     void Start()
     {
         locked = true;
+        boxCollider = GetComponent<BoxCollider2D>();
+        UpdateColliderState();
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    private void UpdateColliderState()
     {
-        
+        if (boxCollider != null)
+        {
+            boxCollider.isTrigger = false;
+        }
     }
-
+    /*
+    private void UpdateCoordinateZ()
+    {
+        Vector3 position = transform.position;
+        position.z = boxCollider.isTrigger ? 0 : 2;
+        transform.position = position;
+    }
+    */
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Key"))
-        { 
-            locked = false;
+        if (other.tag == "Key")
+        {
+            keyInTrigger = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Key"))
+        if (other.tag == "Key")
         {
-            locked = true;
+            keyInTrigger = false;
+        }
+    }
+
+    private void Update()
+    {
+        if (keyInTrigger)
+        {
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                locked = false;
+                boxCollider.isTrigger = true;
+                GameObject keyObject = GameObject.FindGameObjectWithTag("Key");
+                Destroy(keyObject);
+                //UpdateCoordinateZ();
+            }
+            else
+            {
+                Debug.Log("LyaLyaLya");
+            }
         }
     }
 }
