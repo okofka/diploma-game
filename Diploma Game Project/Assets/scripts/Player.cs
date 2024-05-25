@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,7 +17,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {/*
-        if (level == 3)
+        if (level % 4 == 0)
         {
             SaveSystem.SavePlayer(this);
         }*/
@@ -25,13 +26,20 @@ public class Player : MonoBehaviour
         
         if (level % 4 == 0) // ѕерев≥р€Їмо, чи р≥вень кратний трьом
         {
-            PlayerData savedPlayerData = SaveSystem.LoadPlayer(); // «авантажуЇмо дан≥ гравц€ збережен≥
-            if (savedPlayerData == null || level > savedPlayerData.level) // ѕерев≥р€Їмо, чи немаЇ збережених даних або чи р≥вень б≥льший
+            string path = Application.persistentDataPath + "/player.fun";
+            if (File.Exists(path))
             {
-                SaveSystem.SavePlayer(this); // якщо так, збер≥гаЇмо гравц€
+                PlayerData savedPlayerData = SaveSystem.LoadPlayer(); // «авантажуЇмо дан≥ гравц€ збережен≥
+                if (savedPlayerData == null || level > savedPlayerData.level) // ѕерев≥р€Їмо, чи немаЇ збережених даних або чи р≥вень б≥льший
+                {
+                    SaveSystem.SavePlayer(this); // якщо так, збер≥гаЇмо гравц€
+                }
+            }
+            else
+            {
+                SaveSystem.SavePlayer(this);
             }
         }
-
 
     }
 

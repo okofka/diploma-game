@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,16 +10,6 @@ public class MainMenu : MonoBehaviour
 {
     [DllImport("user32.dll")]
     static extern bool SetCursorPos(int X, int Y);
-
-    public void PlayGame()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }
-
-    public void QuitGame() 
-    { 
-        Application.Quit();
-    }
 
     public Button continueButton; // Посилання на кнопку продовження гри в інспекторі Unity
 
@@ -36,25 +27,39 @@ public class MainMenu : MonoBehaviour
 
     void CheckContinueAvailability()
     {
-        PlayerData savedData = SaveSystem.LoadPlayer();
-        if (savedData != null && savedData.level % 3 == 0) // Перевіряємо, чи існують збережені дані і чи є рівень кратний 3
+        // Перевіряємо, чи існує файл збереження
+        string path = Application.persistentDataPath + "/player.fun";
+        if (File.Exists(path))
         {
-            continueButton.interactable = true; // Робимо кнопку продовження гри активною
+            PlayerData savedData = SaveSystem.LoadPlayer();
+            if (savedData != null && savedData.level % 4 == 0) // Перевіряємо, чи існують збережені дані і чи є рівень кратний 3
+            {
+                continueButton.interactable = true; // Робимо кнопку продовження гри активною
+                return;
+            }
         }
-        else
-        {
-            continueButton.interactable = false; // Робимо кнопку продовження гри неактивною
-        }
+        continueButton.interactable = false; // Робимо кнопку продовження гри неактивною, якщо файлу немає або умови не виконані
+    }
+
+    public void PlayGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 
     public void ContinueGame()
     {
         PlayerData savedData = SaveSystem.LoadPlayer();
-        int savedSceneIndex = savedData.level;
-        SceneManager.LoadScene(savedSceneIndex);
+        if (savedData != null)
+        {
+            int savedSceneIndex = savedData.level;
+            SceneManager.LoadScene(savedSceneIndex);
+        }
     }
-
-
 
     private void CursurEndOptions()
     {
