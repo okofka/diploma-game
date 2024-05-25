@@ -15,15 +15,15 @@ public class Player : MonoBehaviour
     }
 
     private void Update()
-    {
+    {/*
         if (level == 3)
         {
             SaveSystem.SavePlayer(this);
-        }
+        }*/
 
-        /* тут буде н'ю логік фор сейвінг, вен ві вил хев мо лвл'с
+        //тут буде н'ю логік фор сейвінг, вен ві вил хев мо лвл'с
         
-        if (level % 3 == 0) // Перевіряємо, чи рівень кратний трьом
+        if (level % 4 == 0) // Перевіряємо, чи рівень кратний трьом
         {
             PlayerData savedPlayerData = SaveSystem.LoadPlayer(); // Завантажуємо дані гравця збережені
             if (savedPlayerData == null || level > savedPlayerData.level) // Перевіряємо, чи немає збережених даних або чи рівень більший
@@ -33,7 +33,6 @@ public class Player : MonoBehaviour
         }
 
 
-        */
     }
 
     private void Awake()
