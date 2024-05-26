@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
 
 public class DoorScript : MonoBehaviour
 {
@@ -15,7 +17,7 @@ public class DoorScript : MonoBehaviour
         locked = true;
         boxCollider = GetComponent<BoxCollider2D>();
         UpdateColliderState();
-        animator.GetComponent<Animator>();
+        animator = GetComponent<Animator>();
     }
     
     private void UpdateColliderState()
@@ -56,10 +58,10 @@ public class DoorScript : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.F))
             {
                 animator.SetTrigger("Open");
-                locked = false;
-                boxCollider.isTrigger = true;
+                boxCollider.isTrigger = false;
                 GameObject keyObject = GameObject.FindGameObjectWithTag("Key");
                 Destroy(keyObject);
+                StartCoroutine(AllowMovementAfterDelay(0.9f));
                 //UpdateCoordinateZ();
             }
             else
@@ -67,5 +69,14 @@ public class DoorScript : MonoBehaviour
                 Debug.Log("LyaLyaLya");
             }
         }
+    }
+
+       
+// Корутина для дозволу на рух після певної затримки
+    private IEnumerator AllowMovementAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        locked = false;
+        boxCollider.isTrigger = true;
     }
 }
