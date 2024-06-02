@@ -21,7 +21,7 @@ public class PauseMenu : MonoBehaviour
 
     private void Start()
     {
-        CursurStartOptions();
+        //CursurStartOptions();
         pauseAnimator = GameObject.Find("Player").GetComponent<Animator>();
         pauseAnimator.updateMode = AnimatorUpdateMode.UnscaledTime;
 
@@ -46,16 +46,16 @@ public class PauseMenu : MonoBehaviour
             if (GameIsPaused)
             {
                 Resume();
-                CursurStartOptions();
+                //CursurStartOptions();
             }
             else
             {
                 Pause();
-                CursurEndOptions();
+                //CursurEndOptions();
             }
         }
     }
-
+    /*
     private void CursurStartOptions()
     {
         Cursor.lockState = CursorLockMode.Confined;
@@ -75,7 +75,7 @@ public class PauseMenu : MonoBehaviour
         int xPos = Screen.width / 2;
         int yPos = Screen.height / 2;
         SetCursorPos(xPos, yPos);
-    }
+    }*/
 
     public void Resume()
     {
