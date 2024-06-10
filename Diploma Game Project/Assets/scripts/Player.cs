@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     public int level;
-    private Inventory inventory;
 
     public void Start()
     {
@@ -24,7 +23,7 @@ public class Player : MonoBehaviour
 
         //тут буде н'ю логік фор сейвінг, вен ві вил хев мо лвл'с
         
-        if (level % 4 == 0) // Перевіряємо, чи рівень кратний трьом
+        if (level % 3 == 0) // Перевіряємо, чи рівень кратний трьом
         {
             string path = Application.persistentDataPath + "/player.fun";
             if (File.Exists(path))

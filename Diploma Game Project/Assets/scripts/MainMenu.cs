@@ -32,7 +32,7 @@ public class MainMenu : MonoBehaviour
         if (File.Exists(path))
         {
             PlayerData savedData = SaveSystem.LoadPlayer();
-            if (savedData != null && savedData.level % 4 == 0) // Перевіряємо, чи існують збережені дані і чи є рівень кратний 3
+            if (savedData != null && savedData.level % 3 == 0) // Перевіряємо, чи існують збережені дані і чи є рівень кратний 3
             {
                 continueButton.interactable = true; // Робимо кнопку продовження гри активною
                 return;
