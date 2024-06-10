@@ -559,7 +559,7 @@ namespace DialogueEditor
 
         public void SpeechSelected(SpeechNode speech)
         {
-            SetupSpeech(speech);
+            //SetupSpeech(speech);//
         }
 
         public void OptionSelected(OptionNode option)
