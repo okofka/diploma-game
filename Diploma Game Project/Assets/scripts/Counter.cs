@@ -22,7 +22,7 @@ public class Counter : MonoBehaviour
             previousCounter = counter;
         }
 
-        if (counter == 3)
+        if (counter >= 5)
         {
             GameObject keyObject = GameObject.FindGameObjectWithTag("Key");
             if (keyObject != null)
