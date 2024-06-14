@@ -281,6 +281,10 @@ PrefabInstance:
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 6542220123175077182, guid: 23880fa306aba7040b0f11675f9cb50e, type: 3}
+      propertyPath: conversationUI
+      value: 
+      objectReference: {fileID: 1130063307}
     - target: {fileID: 7831468517534701926, guid: 23880fa306aba7040b0f11675f9cb50e, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -5012,6 +5016,11 @@ PrefabInstance:
 --- !u!224 &1130063306 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3650486622004183062, guid: fe4da5515230517429b809e78d1e7e9f, type: 3}
+  m_PrefabInstance: {fileID: 1130063305}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1130063307 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8767057608296560782, guid: fe4da5515230517429b809e78d1e7e9f, type: 3}
   m_PrefabInstance: {fileID: 1130063305}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1393609458

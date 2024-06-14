@@ -16,6 +16,8 @@ public class PauseMenu : MonoBehaviour
 
     private PlayerMovementScript playerMovementScript; // Додайте посилання на скрипт PlayerMovementScript
 
+    public GameObject conversationUI;
+
     [DllImport("user32.dll")]
     static extern bool SetCursorPos(int X, int Y);
 
@@ -27,6 +29,9 @@ public class PauseMenu : MonoBehaviour
 
         // Отримайте доступ до скрипту PlayerMovementScript
         playerMovementScript = GameObject.Find("Player").GetComponent<PlayerMovementScript>();
+
+        if (conversationUI != null)
+            conversationUI.SetActive(true);
     }
 
     void Update()
@@ -46,13 +51,12 @@ public class PauseMenu : MonoBehaviour
             if (GameIsPaused)
             {
                 Resume();
-                //CursurStartOptions();
             }
             else
             {
                 Pause();
-                //CursurEndOptions();
             }
+            
         }
     }
     /*
@@ -84,6 +88,8 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = false;
 
         playerMovementScript.ResumeMovement();
+        if (conversationUI != null)
+            conversationUI.SetActive(true);
     }
 
     public void Pause()
@@ -91,10 +97,14 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
+        if (conversationUI != null)
+            conversationUI.SetActive(false);
     }
 
     public void LoadMenu()
     {
+        if (conversationUI != null)
+            conversationUI.SetActive(true);
         Time.timeScale = 1f;
         SceneManager.LoadScene(sceneBuildIndex, LoadSceneMode.Single);
         GameIsPaused = false;
