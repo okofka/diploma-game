@@ -6329,7 +6329,7 @@ PrefabInstance:
       objectReference: {fileID: 1393609459}
     - target: {fileID: 4836579551631461566, guid: 64e03e15b513785458b9e6c4046a65d2, type: 3}
       propertyPath: m_Name
-      value: Conversation
+      value: Conversation_Gricak
       objectReference: {fileID: 0}
     - target: {fileID: 5640905203718868889, guid: 64e03e15b513785458b9e6c4046a65d2, type: 3}
       propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_Target
