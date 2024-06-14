@@ -12,7 +12,7 @@ public class PlayerMovementScript : MonoBehaviour
 
     private float horizontalInput, verticalInput; // Змінні для збереження значень
 
-    private bool canMove = true; // Дозвіл на рух
+    public bool canMove = true; // Дозвіл на рух
 
     public void PauseMovement()
     {
