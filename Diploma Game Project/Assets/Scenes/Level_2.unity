@@ -232,6 +232,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4570393249982850804, guid: 6adbd6ff2abd7084287493c1ad29bc17, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9694224
+      objectReference: {fileID: 0}
+    - target: {fileID: 4570393249982850804, guid: 6adbd6ff2abd7084287493c1ad29bc17, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.24539809
+      objectReference: {fileID: 0}
     - target: {fileID: 4840504651021856022, guid: 6adbd6ff2abd7084287493c1ad29bc17, type: 3}
       propertyPath: m_Name
       value: Player
@@ -290,7 +298,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8590787518774319103, guid: 6adbd6ff2abd7084287493c1ad29bc17, type: 3}
       propertyPath: m_PointLightOuterRadius
-      value: 8.003431
+      value: 2.0812294
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
