@@ -64,10 +64,6 @@ public class DoorScript : MonoBehaviour
                 StartCoroutine(AllowMovementAfterDelay(0.9f));
                 //UpdateCoordinateZ();
             }
-            else
-            {
-                Debug.Log("LyaLyaLya");
-            }
         }
     }
 

@@ -32,6 +32,7 @@ public class PauseMenu : MonoBehaviour
 
         if (conversationUI != null)
             conversationUI.SetActive(true);
+        CursurStartOptions();
     }
 
     void Update()
@@ -59,41 +60,37 @@ public class PauseMenu : MonoBehaviour
             
         }
     }
-    /*
+    
     private void CursurStartOptions()
     {
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = false;
-        SetCursorPositionToCenter();
     }
 
     private void CursurEndOptions()
     {
         Cursor.lockState = CursorLockMode.Confined;
-        Cursor.visible = false;
-        SetCursorPositionToCenter();
+        Cursor.visible = true;
     }
-
-    private void SetCursorPositionToCenter()
-    {
-        int xPos = Screen.width / 2;
-        int yPos = Screen.height / 2;
-        SetCursorPos(xPos, yPos);
-    }*/
 
     public void Resume()
     {
+        CursurEndOptions();
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
 
         playerMovementScript.ResumeMovement();
         if (conversationUI != null)
+        {
+            CursurEndOptions();
             conversationUI.SetActive(true);
+        }
     }
 
     public void Pause()
     {
+        CursurStartOptions();
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;

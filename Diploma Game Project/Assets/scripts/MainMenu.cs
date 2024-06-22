@@ -7,22 +7,17 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
-{/*
+{
     [DllImport("user32.dll")]
-    static extern bool SetCursorPos(int X, int Y);*/
+    static extern bool SetCursorPos(int X, int Y);
 
     public Button continueButton; // Посилання на кнопку продовження гри в інспекторі Unity
 
     void Start()
     {
         // Перевіряємо, чи є продовження гри доступним при запуску меню
-        CheckContinueAvailability();/*
-        CursurEndOptions();*/
-    }
-
-    private void Update()
-    {/*
-        Cursor.visible = true;*/
+        CheckContinueAvailability();
+        CursurEndOptions();
     }
 
     void CheckContinueAvailability()
@@ -44,6 +39,7 @@ public class MainMenu : MonoBehaviour
     public void PlayGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        CursurStartOptions();
     }
 
     public void QuitGame()
@@ -59,19 +55,17 @@ public class MainMenu : MonoBehaviour
             int savedSceneIndex = savedData.level;
             SceneManager.LoadScene(savedSceneIndex);
         }
+        CursurStartOptions();
     }
-    /*
-    private void CursurEndOptions()
+    private void CursurStartOptions()
     {
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = false;
-        SetCursorPositionToCenter();
     }
 
-    private void SetCursorPositionToCenter()
+    private void CursurEndOptions()
     {
-        int xPos = Screen.width / 2;
-        int yPos = Screen.height / 2;
-        SetCursorPos(xPos, yPos);
-    }*/
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
+    }
 }
