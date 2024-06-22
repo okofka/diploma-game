@@ -29,9 +29,10 @@ public class PauseMenu : MonoBehaviour
         
         getsceneBuildIndex = SceneManager.GetActiveScene().buildIndex;
         
-        if (getsceneBuildIndex % 3 == 0)
-            CursurEndOptions();
+        if (getsceneBuildIndex % 3 == 0 && getsceneBuildIndex == 18 || getsceneBuildIndex == 17)
+                   CursurEndOptions();
         Debug.Log("scene " + getsceneBuildIndex);
+
     }
 
     void Update()
