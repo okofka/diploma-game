@@ -269,12 +269,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4570393249982850804, guid: 6adbd6ff2abd7084287493c1ad29bc17, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4570393249982850804, guid: 6adbd6ff2abd7084287493c1ad29bc17, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4570393249982850804, guid: 6adbd6ff2abd7084287493c1ad29bc17, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9694224
+      value: 0.9225374
       objectReference: {fileID: 0}
     - target: {fileID: 4570393249982850804, guid: 6adbd6ff2abd7084287493c1ad29bc17, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.24539809
+      value: 0.38590783
       objectReference: {fileID: 0}
     - target: {fileID: 4840504651021856022, guid: 6adbd6ff2abd7084287493c1ad29bc17, type: 3}
       propertyPath: m_Name
@@ -333,8 +341,40 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8590787518774319103, guid: 6adbd6ff2abd7084287493c1ad29bc17, type: 3}
+      propertyPath: m_Intensity
+      value: 1.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 8590787518774319103, guid: 6adbd6ff2abd7084287493c1ad29bc17, type: 3}
+      propertyPath: m_FalloffIntensity
+      value: 0.451
+      objectReference: {fileID: 0}
+    - target: {fileID: 8590787518774319103, guid: 6adbd6ff2abd7084287493c1ad29bc17, type: 3}
+      propertyPath: m_NormalMapQuality
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8590787518774319103, guid: 6adbd6ff2abd7084287493c1ad29bc17, type: 3}
+      propertyPath: m_NormalMapDistance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8590787518774319103, guid: 6adbd6ff2abd7084287493c1ad29bc17, type: 3}
+      propertyPath: m_PointLightInnerAngle
+      value: 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 8590787518774319103, guid: 6adbd6ff2abd7084287493c1ad29bc17, type: 3}
+      propertyPath: m_PointLightOuterAngle
+      value: 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 8590787518774319103, guid: 6adbd6ff2abd7084287493c1ad29bc17, type: 3}
+      propertyPath: m_PointLightInnerRadius
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8590787518774319103, guid: 6adbd6ff2abd7084287493c1ad29bc17, type: 3}
       propertyPath: m_PointLightOuterRadius
-      value: 2.0812294
+      value: 1.579448
+      objectReference: {fileID: 0}
+    - target: {fileID: 8590787518774319103, guid: 6adbd6ff2abd7084287493c1ad29bc17, type: 3}
+      propertyPath: m_ShadowIntensityEnabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -262,7 +262,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8590787518774319103, guid: 6adbd6ff2abd7084287493c1ad29bc17, type: 3}
       propertyPath: m_PointLightOuterRadius
-      value: 1.345856
+      value: 1.783205
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
