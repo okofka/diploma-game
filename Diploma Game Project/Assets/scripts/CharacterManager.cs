@@ -6,16 +6,19 @@ using DialogueEditor;
 public class CharacterManager : MonoBehaviour
 {
     public NPCConversation myConversation;
+    public NPCConversation mylastWordsConversation;
 
     private Animator playerAnimator;
     private PlayerMovementScript playerMovementScript;
     private Rigidbody2D playerRigidbody;
+    private Counter counteR;
 
     private void Start()
     {
         playerMovementScript = GameObject.Find("Player").GetComponent<PlayerMovementScript>();
         playerAnimator = GameObject.Find("Player").GetComponent<Animator>();
         playerRigidbody = GameObject.Find("Player").GetComponent<Rigidbody2D>();
+        counteR = GameObject.Find("Counter").GetComponent<Counter>();
         ConversationManager.OnConversationEnded += HandleConversationEnded;
     }
 
@@ -24,11 +27,13 @@ public class CharacterManager : MonoBehaviour
         if (other.tag == "Player")
         {
             ConversationManager.Instance.StartConversation(myConversation);
+            counteR.CheckCountOfCorrectAnswers();
             playerMovementScript.canMove = false;
             SetIdleAnimation();
             StopPlayerMovement();
         }
     }
+
 
     private void HandleConversationEnded()
     {
@@ -67,5 +72,11 @@ public class CharacterManager : MonoBehaviour
         {
             playerAnimator.speed = 1; // Відновити анімацію
         }
+    }
+
+    public void Update()
+    {
+        if (counteR.counter > 4)
+            myConversation = mylastWordsConversation;
     }
 }

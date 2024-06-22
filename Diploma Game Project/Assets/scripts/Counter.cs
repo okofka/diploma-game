@@ -36,6 +36,19 @@ public class Counter : MonoBehaviour
         }
     }
 
+    public void CheckCountOfCorrectAnswers() {
+        if (counter < 5)
+        {
+            counter = 0;
+            Debug.Log("Counter uncreased: " + counter);
+        }
+        else if (counter > 4)
+        {
+            counter = counter;
+            Debug.Log("Counter saved: " + counter);
+        }
+    }
+
     private void Start()
     {
         GameObject keyObject = GameObject.FindGameObjectWithTag("Key");
