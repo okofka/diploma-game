@@ -5315,6 +5315,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1432159855}
   - component: {fileID: 1432159854}
+  - component: {fileID: 1432159856}
   m_Layer: 0
   m_Name: Gricak
   m_TagString: Untagged
@@ -5389,6 +5390,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1432159856
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432159853}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.032379, y: 3.6551623, z: 0.2}
+  m_Center: {x: 1.9661896, y: -1.3370097, z: 0}
 --- !u!1001 &1447606326
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5411,11 +5433,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8306257103545785221, guid: 6adbd6ff2abd7084287493c1ad29bc17, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.77
+      value: -2.6
       objectReference: {fileID: 0}
     - target: {fileID: 8306257103545785221, guid: 6adbd6ff2abd7084287493c1ad29bc17, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.45
+      value: -1.39
       objectReference: {fileID: 0}
     - target: {fileID: 8306257103545785221, guid: 6adbd6ff2abd7084287493c1ad29bc17, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5543,7 +5565,7 @@ Transform:
   m_GameObject: {fileID: 1754916682}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.012, y: 0.94, z: 3.551813}
+  m_LocalPosition: {x: -4.43, y: 2.09, z: 3.551813}
   m_LocalScale: {x: 0.6383813, y: 0.84487, z: 1.0088}
   m_ConstrainProportionsScale: 0
   m_Children: []
