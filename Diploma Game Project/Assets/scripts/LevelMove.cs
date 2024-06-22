@@ -29,7 +29,6 @@ public class LevelMove : MonoBehaviour
             Debug.LogWarning("Door object not found or does not have a DoorScript component.");
         }
     }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
@@ -37,7 +36,6 @@ public class LevelMove : MonoBehaviour
             playerInTrigger = true;
         }
     }
-
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.tag == "Player")
@@ -45,7 +43,6 @@ public class LevelMove : MonoBehaviour
             playerInTrigger = false;
         }
     }
-
     private void Update()
     {
         if (playerInTrigger)

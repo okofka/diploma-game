@@ -7,32 +7,31 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
-
     public GameObject pauseMenuUI;
-
     public int sceneBuildIndex;
-
+    public int getsceneBuildIndex;
     private Animator pauseAnimator;
-
     private PlayerMovementScript playerMovementScript; // Додайте посилання на скрипт PlayerMovementScript
-
     public GameObject conversationUI;
-
     [DllImport("user32.dll")]
     static extern bool SetCursorPos(int X, int Y);
 
     private void Start()
     {
-        //CursurStartOptions();
+        CursurStartOptions();
         pauseAnimator = GameObject.Find("Player").GetComponent<Animator>();
         pauseAnimator.updateMode = AnimatorUpdateMode.UnscaledTime;
-
-        // Отримайте доступ до скрипту PlayerMovementScript
+        
         playerMovementScript = GameObject.Find("Player").GetComponent<PlayerMovementScript>();
 
         if (conversationUI != null)
             conversationUI.SetActive(true);
-        CursurStartOptions();
+        
+        getsceneBuildIndex = SceneManager.GetActiveScene().buildIndex;
+        
+        if (getsceneBuildIndex % 3 == 0)
+            CursurEndOptions();
+        Debug.Log("scene " + getsceneBuildIndex);
     }
 
     void Update()
@@ -75,7 +74,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
-        CursurEndOptions();
+        CursurStartOptions();
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
@@ -105,7 +104,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene(sceneBuildIndex, LoadSceneMode.Single);
         GameIsPaused = false;
-
+        CursurEndOptions();
         playerMovementScript.ResumeMovement();
     }
 
