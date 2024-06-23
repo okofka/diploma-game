@@ -5784,6 +5784,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myConversation: {fileID: 872205278}
   mylastWordsConversation: {fileID: 1684827277}
+  playerInTrigger: 0
 --- !u!61 &1754916684
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5816,7 +5817,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.041680634, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -5827,7 +5828,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.07, y: 1.84}
+  m_Size: {x: 3.1533608, y: 1.84}
   m_EdgeRadius: 0
 --- !u!4 &1754916685
 Transform:
