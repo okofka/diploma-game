@@ -9,6 +9,7 @@ public class Bars : MonoBehaviour
     public BoxCollider2D boxCollider;
     public bool locked;
     public bool playerInTrigger = false;
+    public CapsuleCollider2D capsuleCollider;
 
     private void Start()
     {
@@ -60,5 +61,7 @@ public class Bars : MonoBehaviour
         yield return new WaitForSeconds(delay);
         locked = false;
         boxCollider.isTrigger = true;
+        capsuleCollider.enabled = false;
+        boxCollider.enabled = false;
     }
 }
