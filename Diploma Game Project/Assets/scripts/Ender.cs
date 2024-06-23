@@ -12,7 +12,7 @@ public class Ender : MonoBehaviour
     {
         CursurEndOptions();
         animator = GetComponent<Animator>();
-        StartCoroutine(AllowMovementAfterDelay(131));
+        StartCoroutine(AllowMovementAfterDelay(135));
     }
     private IEnumerator AllowMovementAfterDelay(float delay)
     {
@@ -22,6 +22,6 @@ public class Ender : MonoBehaviour
     private void CursurEndOptions()
     {
         Cursor.lockState = CursorLockMode.Confined;
-        Cursor.visible = true;
+        Cursor.visible = false;
     }
 }
