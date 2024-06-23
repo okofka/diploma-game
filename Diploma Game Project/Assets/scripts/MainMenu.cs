@@ -8,9 +8,6 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    [DllImport("user32.dll")]
-    static extern bool SetCursorPos(int X, int Y);
-
     public Button continueButton; // Посилання на кнопку продовження гри в інспекторі Unity
 
     void Start()

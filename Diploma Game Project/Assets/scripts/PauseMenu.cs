@@ -20,7 +20,11 @@ public class PauseMenu : MonoBehaviour
         CursurStartOptions();
         pauseAnimator = GameObject.Find("Player").GetComponent<Animator>();
         pauseAnimator.updateMode = AnimatorUpdateMode.UnscaledTime;
-        characterManager = GameObject.Find("Character-table").GetComponent<CharacterManager>();
+        GameObject characterTableObject = GameObject.Find("Character-table");
+        if (characterTableObject != null)
+        {
+            characterManager = characterTableObject.GetComponent<CharacterManager>();
+        }
         playerMovementScript = GameObject.Find("Player").GetComponent<PlayerMovementScript>();
 
         if (conversationUI != null)
