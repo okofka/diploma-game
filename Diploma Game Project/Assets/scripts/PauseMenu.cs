@@ -105,8 +105,6 @@ public class PauseMenu : MonoBehaviour
         {
             if (characterManager.playerInTrigger == true)
                 CursurEndOptions();
-            else
-                CursurStartOptions();
             conversationUI.SetActive(false);
         }
     }
