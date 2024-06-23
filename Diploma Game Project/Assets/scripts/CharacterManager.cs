@@ -13,6 +13,8 @@ public class CharacterManager : MonoBehaviour
     private Rigidbody2D playerRigidbody;
     private Counter counteR;
 
+    public bool playerInTrigger = false;
+
     private void Start()
     {
         playerMovementScript = GameObject.Find("Player").GetComponent<PlayerMovementScript>();
@@ -26,15 +28,18 @@ public class CharacterManager : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            ConversationManager.Instance.StartConversation(myConversation);
-            counteR.CheckCountOfCorrectAnswers();
-            playerMovementScript.canMove = false;
-            SetIdleAnimation();
-            StopPlayerMovement();
+            playerInTrigger = true;
         }
     }
 
-
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.tag == "Player")
+        {
+            playerInTrigger = false;
+            CursurStartOptions();
+        }
+    }
     private void HandleConversationEnded()
     {
         playerMovementScript.canMove = true;
@@ -76,7 +81,32 @@ public class CharacterManager : MonoBehaviour
 
     public void Update()
     {
+        if (playerInTrigger)
+        {
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                CursurEndOptions();
+                ConversationManager.Instance.StartConversation(myConversation);
+                counteR.CheckCountOfCorrectAnswers();
+                playerMovementScript.canMove = false;
+                SetIdleAnimation();
+                StopPlayerMovement();
+            }
+        }
+
         if (counteR.counter > 4)
             myConversation = mylastWordsConversation;
+    }
+
+    private void CursurStartOptions()
+{
+    Cursor.lockState = CursorLockMode.Confined;
+    Cursor.visible = false;
+}
+
+    private void CursurEndOptions()
+    {
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
     }
 }

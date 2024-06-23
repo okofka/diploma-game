@@ -13,22 +13,18 @@ public class PauseMenu : MonoBehaviour
     private Animator pauseAnimator;
     private PlayerMovementScript playerMovementScript; // Додайте посилання на скрипт PlayerMovementScript
     public GameObject conversationUI;
-    [DllImport("user32.dll")]
-    static extern bool SetCursorPos(int X, int Y);
+    private CharacterManager characterManager;
 
     private void Start()
     {
         CursurStartOptions();
         pauseAnimator = GameObject.Find("Player").GetComponent<Animator>();
         pauseAnimator.updateMode = AnimatorUpdateMode.UnscaledTime;
-        
+        characterManager = GameObject.Find("Character-table").GetComponent<CharacterManager>();
         playerMovementScript = GameObject.Find("Player").GetComponent<PlayerMovementScript>();
 
         if (conversationUI != null)
             conversationUI.SetActive(true);
-        CheckCursorONlevels();
-        Debug.Log("scene " + getsceneBuildIndex);
-
     }
 
     void Update()
@@ -39,13 +35,6 @@ public class PauseMenu : MonoBehaviour
         {
             playerMovementScript.UpdateMovement();
         }
-        CheckCursorONlevels();
-    }
-
-    private void CheckCursorONlevels() {
-        getsceneBuildIndex = SceneManager.GetActiveScene().buildIndex;
-        if (getsceneBuildIndex % 3 == 0 && getsceneBuildIndex == 18 || getsceneBuildIndex == 17)
-            CursurEndOptions();
     }
 
     public void PausedKeyPressed()
@@ -86,7 +75,10 @@ public class PauseMenu : MonoBehaviour
         playerMovementScript.ResumeMovement();
         if (conversationUI != null)
         {
-            CursurEndOptions();
+            if (characterManager.playerInTrigger == true)
+                CursurEndOptions();
+            else
+                CursurStartOptions();
             conversationUI.SetActive(true);
         }
     }
@@ -98,7 +90,13 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0f;
         GameIsPaused = true;
         if (conversationUI != null)
+        {
+            if (characterManager.playerInTrigger == true)
+                CursurEndOptions();
+            else
+                CursurStartOptions();
             conversationUI.SetActive(false);
+        }
     }
 
     public void LoadMenu()
