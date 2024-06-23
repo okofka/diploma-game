@@ -26,11 +26,7 @@ public class PauseMenu : MonoBehaviour
 
         if (conversationUI != null)
             conversationUI.SetActive(true);
-        
-        getsceneBuildIndex = SceneManager.GetActiveScene().buildIndex;
-        
-        if (getsceneBuildIndex % 3 == 0 && getsceneBuildIndex == 18 || getsceneBuildIndex == 17)
-                   CursurEndOptions();
+        CheckCursorONlevels();
         Debug.Log("scene " + getsceneBuildIndex);
 
     }
@@ -43,6 +39,13 @@ public class PauseMenu : MonoBehaviour
         {
             playerMovementScript.UpdateMovement();
         }
+        CheckCursorONlevels();
+    }
+
+    private void CheckCursorONlevels() {
+        getsceneBuildIndex = SceneManager.GetActiveScene().buildIndex;
+        if (getsceneBuildIndex % 3 == 0 && getsceneBuildIndex == 18 || getsceneBuildIndex == 17)
+            CursurEndOptions();
     }
 
     public void PausedKeyPressed()
