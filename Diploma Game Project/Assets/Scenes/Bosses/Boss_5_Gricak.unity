@@ -5203,7 +5203,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 0
-  TMPFont: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: ac4f25e4fcea06d4fa0dc738e931cb33, type: 2}
   Icon: {fileID: 21300000, guid: 179395dce4b884543bf7134558fb4eef, type: 3}
   Audio: {fileID: 0}
 --- !u!4 &1249226353
