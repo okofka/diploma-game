@@ -18,10 +18,22 @@ public class PauseMenu : MonoBehaviour
     private void Start()
     {
         CursurStartOptions();
-        pauseAnimator = GameObject.Find("Player").GetComponent<Animator>();
-        pauseAnimator.updateMode = AnimatorUpdateMode.UnscaledTime;
-        characterManager = GameObject.Find("Character-table").GetComponent<CharacterManager>();
-        playerMovementScript = GameObject.Find("Player").GetComponent<PlayerMovementScript>();
+        GameObject pauseAnimatorObject = GameObject.Find("Player");
+        if (pauseAnimatorObject != null)
+        {
+            pauseAnimator = pauseAnimatorObject.GetComponent<Animator>();
+            pauseAnimator.updateMode = AnimatorUpdateMode.UnscaledTime;
+        }
+        GameObject characterTableObject = GameObject.Find("Character-table");
+        if (characterTableObject != null)
+        {
+            characterManager = characterTableObject.GetComponent<CharacterManager>();
+        }
+        GameObject playerMovementObject = GameObject.Find("Player");
+        if (playerMovementObject != null)
+        {
+            playerMovementScript = playerMovementObject.GetComponent<PlayerMovementScript>();
+        }
 
         if (conversationUI != null)
             conversationUI.SetActive(true);
@@ -33,7 +45,8 @@ public class PauseMenu : MonoBehaviour
         // якщо гра не на пауз≥, оновлюЇмо рух
         if (!GameIsPaused)
         {
-            playerMovementScript.UpdateMovement();
+            if(playerMovementScript != null)
+                playerMovementScript.UpdateMovement();
         }
     }
 
@@ -52,7 +65,6 @@ public class PauseMenu : MonoBehaviour
             
         }
     }
-    
     private void CursurStartOptions()
     {
         Cursor.lockState = CursorLockMode.Confined;
@@ -71,8 +83,8 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
-
-        playerMovementScript.ResumeMovement();
+        if(playerMovementScript != null)
+            playerMovementScript.ResumeMovement();
         if (conversationUI != null)
         {
             if (characterManager.playerInTrigger == true)
@@ -107,7 +119,8 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene(sceneBuildIndex, LoadSceneMode.Single);
         GameIsPaused = false;
         CursurEndOptions();
-        playerMovementScript.ResumeMovement();
+        if(playerMovementScript != null)
+            playerMovementScript.ResumeMovement();
     }
 
     public void QuitGame()

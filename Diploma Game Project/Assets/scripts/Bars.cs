@@ -8,7 +8,8 @@ public class Bars : MonoBehaviour
     public Animator animator;
     public BoxCollider2D boxCollider;
     public bool locked;
-    private bool playerInTrigger = false;
+    public bool playerInTrigger = false;
+    public CapsuleCollider2D capsuleCollider;
 
     private void Start()
     {
@@ -34,9 +35,7 @@ public class Bars : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.F))
                 {
                     animator.SetTrigger("Open");
-                    locked = false;
-                    boxCollider.isTrigger = true;
-                    //StartCoroutine(AllowMovementAfterDelay(0.9f));
+                    StartCoroutine(AllowMovementAfterDelay(0.9f));
                 }
             }
         }
@@ -55,5 +54,14 @@ public class Bars : MonoBehaviour
         {
             playerInTrigger = false;
         }
+    }
+
+    private IEnumerator AllowMovementAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        locked = false;
+        boxCollider.isTrigger = true;
+        capsuleCollider.enabled = false;
+        boxCollider.enabled = false;
     }
 }

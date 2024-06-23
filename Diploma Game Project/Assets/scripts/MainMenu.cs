@@ -8,9 +8,6 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    [DllImport("user32.dll")]
-    static extern bool SetCursorPos(int X, int Y);
-
     public Button continueButton; // Посилання на кнопку продовження гри в інспекторі Unity
 
     void Start()
@@ -27,7 +24,7 @@ public class MainMenu : MonoBehaviour
         if (File.Exists(path))
         {
             PlayerData savedData = SaveSystem.LoadPlayer();
-            if (savedData != null && savedData.level % 3 == 0 || savedData.level == 18) // Перевіряємо, чи існують збережені дані і чи є рівень кратний 3
+            if (savedData != null && savedData.level % 3 == 0 || savedData.level == 17) // Перевіряємо, чи існують збережені дані і чи є рівень кратний 3
             {
                 continueButton.interactable = true; // Робимо кнопку продовження гри активною
                 return;
