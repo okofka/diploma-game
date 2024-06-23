@@ -6023,8 +6023,8 @@ Tilemap:
   - first: {x: -6, y: 4, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 6
-      m_TileSpriteIndex: 5
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -7926,15 +7926,15 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 885a8930f1607484cb0a7ce4ca5b70e6, type: 2}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: ec3e14945599b5549af15f7e8a3cb713, type: 2}
   - m_RefCount: 72
     m_Data: {fileID: 11400000, guid: e974e9ca4d1431642b01be93f3f009cb, type: 2}
   - m_RefCount: 64
     m_Data: {fileID: 11400000, guid: 848d8809065123f469daa26ade8f14e5, type: 2}
   - m_RefCount: 64
     m_Data: {fileID: 11400000, guid: 490add3106f34734882ed7967bd357f0, type: 2}
-  - m_RefCount: 63
+  - m_RefCount: 62
     m_Data: {fileID: 11400000, guid: 6148bd03f8ae62c4c94df01dbea8864b, type: 2}
   - m_RefCount: 56
     m_Data: {fileID: 11400000, guid: 34b47a3d6e42b1546b324654b192e441, type: 2}
@@ -7955,13 +7955,13 @@ Tilemap:
     m_Data: {fileID: -1330677178, guid: 40de3f585903dfe46a9b39dd331dcaeb, type: 3}
   - m_RefCount: 72
     m_Data: {fileID: 459582697, guid: 40de3f585903dfe46a9b39dd331dcaeb, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -782604181, guid: 0cf9f3198bae6f043a5f6a074c0d7501, type: 3}
   - m_RefCount: 64
     m_Data: {fileID: -884089445, guid: 40de3f585903dfe46a9b39dd331dcaeb, type: 3}
   - m_RefCount: 64
     m_Data: {fileID: -352048521, guid: 40de3f585903dfe46a9b39dd331dcaeb, type: 3}
-  - m_RefCount: 63
+  - m_RefCount: 62
     m_Data: {fileID: 1105292543, guid: 40de3f585903dfe46a9b39dd331dcaeb, type: 3}
   - m_RefCount: 56
     m_Data: {fileID: -1536433931, guid: 40de3f585903dfe46a9b39dd331dcaeb, type: 3}
@@ -8351,7 +8351,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 164304970568115350, guid: 27a6215530fb0a944b579cf851cdb584, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.1723
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 164304970568115350, guid: 27a6215530fb0a944b579cf851cdb584, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8389,6 +8389,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door
       objectReference: {fileID: 0}
+    - target: {fileID: 4082159988958678223, guid: 27a6215530fb0a944b579cf851cdb584, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -408592115, guid: 10a5f43e7a06eff45815b4bf6cf7d4db, type: 3}
     - target: {fileID: 6681693101026299029, guid: 27a6215530fb0a944b579cf851cdb584, type: 3}
       propertyPath: animator
       value: 
